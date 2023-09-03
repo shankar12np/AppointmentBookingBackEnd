@@ -1,24 +1,23 @@
 package com.diyo.apointmentbookingsystem;
 
+import com.twilio.Twilio;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CrossConfig implements WebMvcConfigurer {
+
+    @Value("${twilio.accountSid}")
+    private String twilioAccountSid;
+
+    @Value("${twilio.authToken}")
+    private String twilioAuthToken;
+
     @Bean
-    public JavaMailSender javaMailSender() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("your.smtp.host");
-        mailSender.setPort(587); // or the appropriate port
-        mailSender.setUsername("your.email@example.com");
-        mailSender.setPassword("your-email-password");
-
-        // Additional configuration settings
-
-        return mailSender;
+    public void initTwilio() {
+        Twilio.init(twilioAccountSid, twilioAuthToken);
     }
 
 
@@ -30,4 +29,5 @@ public class CrossConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
-}
+
+  }

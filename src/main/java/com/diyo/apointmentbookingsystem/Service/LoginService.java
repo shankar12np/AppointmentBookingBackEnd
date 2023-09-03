@@ -35,4 +35,8 @@ public class LoginService {
     public Login findByEmail(String email) {
         return loginRepository.findByEmail(email).orElse(null);
     }
+
+    public Login findByPhoneNumber(String phoneNumber) {
+        return loginRepository.findByPhoneNumber(phoneNumber);
+    }
 }
