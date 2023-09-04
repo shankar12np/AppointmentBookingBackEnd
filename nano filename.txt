@@ -1,0 +1,3 @@
+nano .gitignore
+src/main/resources/application.properties
+
