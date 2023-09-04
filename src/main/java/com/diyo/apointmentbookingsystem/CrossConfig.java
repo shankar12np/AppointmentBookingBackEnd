@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CrossConfig implements WebMvcConfigurer {
 
-    @Value("${twilio.accountSid}")
+@Value("${twilio.accountSid}")
     private String twilioAccountSid;
 
     @Value("${twilio.authToken}")
