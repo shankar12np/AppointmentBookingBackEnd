@@ -23,7 +23,7 @@ public class AppointmentsController {
     @PostMapping
     public ResponseEntity<String> createAppointment(@RequestBody Appointments appointments) {
         appointmentsService.createAppointment(appointments);
-        return ResponseEntity.ok("Appointment Created");
+        return ResponseEntity.ok("Appointment Created! Nice Job");
     }
 
     @GetMapping
